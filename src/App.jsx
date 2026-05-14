@@ -50,7 +50,7 @@ const work = [
   {
     title: 'Contractor SMS-Ready Website',
     description:
-      'A contractor website built to strengthen online credibility and support SMS/texting platform approval requirements.',
+      'Built to make the business easier to trust online and support SMS/texting platform approval requirements.',
     icon: MessageSquareText,
     tags: ['Website', 'Compliance', 'Contractors'],
     cta: 'View case study',
@@ -59,7 +59,7 @@ const work = [
   {
     title: 'Prime Lawn Care',
     description:
-      'A local business website designed to present services clearly and make quote requests simple.',
+      'Designed to turn local interest into quote requests with clear services, simple next steps, and lead capture.',
     icon: Wrench,
     tags: ['Website', 'Local Business', 'Lead Capture'],
     cta: 'View live site',
@@ -69,7 +69,7 @@ const work = [
   {
     title: 'Falcon Platform',
     description:
-      'A workflow and order management platform concept for appraisal operations.',
+      'A workflow concept focused on reducing operational drag, organizing orders, and keeping appraisal work moving.',
     icon: BriefcaseBusiness,
     tags: ['Workflow', 'Appraisal', 'Operations'],
     cta: 'Private concept',
@@ -79,7 +79,7 @@ const work = [
   {
     title: 'CreatorFuelAI Lab',
     description:
-      'A creative testing ground for AI-assisted content, websites, and digital media experiments.',
+      'A testing ground for content systems and experiments that can become useful websites, campaigns, or automation ideas.',
     icon: PenTool,
     tags: ['AI', 'Content', 'Experiments'],
     cta: 'View experiments',
@@ -92,6 +92,33 @@ const systemItems = [
   'Workflow Tools',
   'Automation',
   'Business Systems',
+]
+
+const benefits = [
+  {
+    title: 'Look more credible',
+    description:
+      'Give prospects, partners, and platforms a clear reason to trust your business before they ever call.',
+    icon: BadgeCheck,
+  },
+  {
+    title: 'Capture better leads',
+    description:
+      'Make it easier for the right customers to understand your offer and take the next step.',
+    icon: MessageSquareText,
+  },
+  {
+    title: 'Reduce manual follow-up',
+    description:
+      'Use simple systems to organize requests, handoffs, and recurring admin work.',
+    icon: Network,
+  },
+  {
+    title: 'Support approvals and growth',
+    description:
+      'Build the digital foundation needed for texting, trust, operations, and future expansion.',
+    icon: CheckCircle2,
+  },
 ]
 
 function ProjectPreview({ type, title }) {
@@ -239,8 +266,7 @@ function App() {
     <main className="site-shell">
       <header className="site-header">
         <a className="brand" href="#top" aria-label="The Rossi Company home">
-          <span className="brand-mark">R</span>
-          <span>The Rossi Company</span>
+          <span className="brand-text">The Rossi Company</span>
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
           <a href="#services">Services</a>
@@ -257,13 +283,16 @@ function App() {
         <div className="hero-copy">
           <p className="eyebrow">
             <BadgeCheck size={18} aria-hidden="true" />
-            Practical digital systems for growing businesses
+            Practical outcomes for growing businesses
           </p>
-          <h1>Systems, websites, and automation for growing businesses.</h1>
+          <h1>
+            We help businesses look more professional, capture more leads, and
+            run more efficiently.
+          </h1>
           <p className="hero-subtitle">
-            The Rossi Company helps small businesses build practical digital
-            systems that improve trust, streamline operations, and support
-            growth.
+            The Rossi Company builds websites, workflow systems, and automation
+            that improve trust, simplify operations, and help small businesses
+            grow with less friction.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="mailto:chris@therossicompany.com">
@@ -298,7 +327,7 @@ function App() {
       <section className="section" id="services">
         <div className="section-heading">
           <p className="section-kicker">What we build</p>
-          <h2>Digital systems that solve real business problems.</h2>
+          <h2>Websites and systems built around business outcomes.</h2>
         </div>
         <div className="card-grid">
           {services.map(({ title, description, icon: Icon }) => (
@@ -313,11 +342,29 @@ function App() {
         </div>
       </section>
 
+      <section className="section outcomes-section" id="outcomes">
+        <div className="section-heading">
+          <p className="section-kicker">Why it matters</p>
+          <h2>What this actually does for your business</h2>
+        </div>
+        <div className="benefit-grid">
+          {benefits.map(({ title, description, icon: Icon }) => (
+            <article className="benefit-block" key={title}>
+              <div className="benefit-icon">
+                <Icon size={21} aria-hidden="true" />
+              </div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="section muted-section" id="work">
         <div className="work-heading-row">
           <div className="section-heading">
             <p className="section-kicker">Featured work</p>
-            <h2>Built work, real use cases, practical outcomes.</h2>
+            <h2>Real use cases built to improve trust, leads, and efficiency.</h2>
           </div>
           <div className="work-controls" aria-label="Featured work carousel controls">
             <button
@@ -395,10 +442,11 @@ function App() {
       <section className="contact-section" id="contact">
         <div>
           <p className="section-kicker">Contact</p>
-          <h2>Have a business problem worth systemizing?</h2>
+          <h2>What part of your business feels harder than it should?</h2>
           <p>
-            Let's talk through what you're trying to improve and whether a
-            website, workflow tool, or automation system can help.
+            Tell me what you are trying to improve. We can talk through whether
+            the right next step is a better website, a cleaner workflow, or a
+            simple automation that removes repeated work.
           </p>
         </div>
         <a className="button primary contact-button" href="mailto:chris@therossicompany.com">
