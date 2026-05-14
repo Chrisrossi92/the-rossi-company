@@ -488,21 +488,8 @@ a {
 
 .work-showcase {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(420px, 540px);
-  gap: 22px;
-  margin-inline: -2px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  padding: 2px 2px 18px;
-  scroll-padding-inline: 2px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-}
-
-.work-showcase:focus-visible {
-  outline: 2px solid rgba(49, 72, 56, 0.45);
-  outline-offset: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .project-card {
@@ -510,9 +497,18 @@ a {
   border: 1px solid rgba(229, 224, 216, 0.95);
   border-radius: 8px;
   box-shadow: 0 20px 50px rgba(24, 35, 49, 0.1);
-  min-height: 590px;
   overflow: hidden;
-  scroll-snap-align: start;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  border-color: rgba(49, 72, 56, 0.28);
+  box-shadow: 0 24px 64px rgba(24, 35, 49, 0.14);
+  transform: translateY(-3px);
 }
 
 .preview-screen {
@@ -523,8 +519,55 @@ a {
   min-height: 310px;
 }
 
+.screenshot-preview {
+  background:
+    radial-gradient(circle at 85% 12%, rgba(165, 111, 60, 0.12), transparent 36%),
+    #f8f7f3;
+  min-height: auto;
+}
+
+.screenshot-stage {
+  background: #ece7df;
+  height: 238px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-screenshot {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.project-card:nth-child(1) .project-screenshot {
+  object-position: center 12%;
+}
+
+.project-card:nth-child(2) .project-screenshot {
+  object-position: center 8%;
+}
+
+.project-card:nth-child(3) .project-screenshot {
+  object-position: center 10%;
+}
+
+.project-screenshot-secondary {
+  width: 31%;
+  aspect-ratio: 4 / 3;
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 6px;
+  box-shadow: 0 14px 30px rgba(24, 35, 49, 0.22);
+  object-fit: cover;
+  object-position: top center;
+}
+
 .preview-browser-bar {
-  height: 36px;
+  height: 32px;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -914,32 +957,39 @@ a {
 }
 
 .project-content {
-  padding: 24px;
+  padding: 20px;
 }
 
 .project-title-row {
   display: grid;
-  grid-template-columns: 46px 1fr;
+  grid-template-columns: 40px 1fr;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+}
+
+.project-title-row .work-icon {
+  width: 40px;
+  height: 40px;
 }
 
 .project-title-row h3 {
   color: var(--ink);
-  font-size: 23px;
-  line-height: 1.16;
+  font-size: 21px;
+  line-height: 1.18;
   margin: 0;
 }
 
 .project-card p {
-  margin: 18px 0 0;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 14px 0 0;
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 20px;
+  gap: 7px;
+  margin-top: 16px;
 }
 
 .project-tags span {
@@ -947,9 +997,9 @@ a {
   border-radius: 999px;
   color: var(--green-dark);
   background: rgba(81, 109, 88, 0.08);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
-  padding: 7px 10px;
+  padding: 6px 9px;
 }
 
 .project-link {
@@ -960,11 +1010,11 @@ a {
   border: 1px solid rgba(49, 72, 56, 0.22);
   border-radius: 999px;
   color: var(--green-dark);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
-  margin-top: 26px;
-  min-height: 42px;
-  padding: 10px 15px;
+  margin-top: 20px;
+  min-height: 38px;
+  padding: 9px 13px;
   text-decoration: none;
   transition:
     background 180ms ease,
@@ -1090,7 +1140,11 @@ a {
   }
 
   .work-showcase {
-    grid-auto-columns: minmax(360px, 78vw);
+    grid-template-columns: 1fr;
+  }
+
+  .screenshot-stage {
+    height: 360px;
   }
 }
 
@@ -1174,29 +1228,26 @@ a {
 
   .work-showcase {
     display: grid;
-    grid-auto-flow: row;
-    grid-auto-columns: unset;
     gap: 18px;
-    overflow: visible;
-    padding-bottom: 0;
-    scroll-snap-type: none;
   }
 
-  .project-card {
-    min-height: auto;
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: none;
   }
 
   .preview-screen {
-    min-height: 250px;
+    min-height: auto;
   }
 
-  .preview-body {
-    min-height: 214px;
-    padding: 16px;
+  .screenshot-stage {
+    height: 230px;
   }
 
-  .preview-media-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .project-screenshot-secondary {
+    width: 38%;
+    right: 10px;
+    bottom: 10px;
   }
 
   .systems-panel {

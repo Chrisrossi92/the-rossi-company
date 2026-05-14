@@ -1,22 +1,23 @@
-import { useRef } from 'react'
 import {
   ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
   Building2,
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   ClipboardList,
   ExternalLink,
   LockKeyhole,
   Mail,
   MessageSquareText,
   Network,
-  PenTool,
   ShieldCheck,
   Wrench,
 } from 'lucide-react'
+import falconHomepagePreview from './assets/work/falcon-appraiser-homepage.png'
+import falconOrdersPreview from './assets/work/falcon-orders-list.png'
+import kirkhamHomepagePreview from './assets/work/kirkham-homepage-preview.png'
+import kirkhamSmsPreview from './assets/work/kirkham-sms-preview.png'
+import primeLawnCarePreview from './assets/work/prime-lawn-care-preview.png'
 import './App.css'
 
 const services = [
@@ -50,40 +51,38 @@ const work = [
   {
     title: 'Contractor SMS-Ready Website',
     description:
-      'Built to make the business easier to trust online and support SMS/texting platform approval requirements.',
+      'A contractor website built to strengthen credibility, present commercial services clearly, and support SMS/texting platform approval requirements.',
     icon: MessageSquareText,
-    tags: ['Website', 'Compliance', 'Contractors'],
+    tags: ['Contractor Website', 'SMS Compliance', 'Trust Signals'],
     cta: 'View case study',
-    preview: 'contractor',
+    image: kirkhamHomepagePreview,
+    secondaryImage: kirkhamSmsPreview,
+    imageAlt: 'Kirkham Contracting website homepage preview',
+    secondaryAlt: 'Kirkham Contracting SMS compliance page preview',
   },
   {
     title: 'Prime Lawn Care',
     description:
-      'Designed to turn local interest into quote requests with clear services, simple next steps, and lead capture.',
+      'A local service business website designed to present services clearly, build trust quickly, and make quote requests simple.',
     icon: Wrench,
-    tags: ['Website', 'Local Business', 'Lead Capture'],
+    tags: ['Local Business', 'Website', 'Lead Capture'],
     cta: 'View live site',
     href: 'https://prime-lawn-care.vercel.app/',
-    preview: 'lawn',
+    image: primeLawnCarePreview,
+    imageAlt: 'Prime Lawn Care website preview',
   },
   {
     title: 'Falcon Platform',
     description:
-      'A workflow concept focused on reducing operational drag, organizing orders, and keeping appraisal work moving.',
+      'A workflow and order management platform built for appraisal operations, tracking orders, deadlines, reviews, and team handoffs.',
     icon: BriefcaseBusiness,
-    tags: ['Workflow', 'Appraisal', 'Operations'],
+    tags: ['Operations Platform', 'Workflow', 'Appraisal Tech'],
     cta: 'Private concept',
-    preview: 'falcon',
+    image: falconHomepagePreview,
+    secondaryImage: falconOrdersPreview,
+    imageAlt: 'Falcon Platform appraiser dashboard preview',
+    secondaryAlt: 'Falcon Platform orders list preview',
     private: true,
-  },
-  {
-    title: 'CreatorFuelAI Lab',
-    description:
-      'A testing ground for content systems and experiments that can become useful websites, campaigns, or automation ideas.',
-    icon: PenTool,
-    tags: ['AI', 'Content', 'Experiments'],
-    cta: 'View experiments',
-    preview: 'lab',
   },
 ]
 
@@ -121,125 +120,22 @@ const benefits = [
   },
 ]
 
-function ProjectPreview({ type, title }) {
+function ProjectPreview({ image, imageAlt, secondaryImage, secondaryAlt }) {
   return (
-    <div className={`preview-screen ${type}`} aria-label={`${title} preview`}>
+    <div className="preview-screen screenshot-preview">
       <div className="preview-browser-bar">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <div className="preview-body">
-        {type === 'contractor' && (
-          <>
-            <div className="contractor-layout">
-              <div className="preview-nav-line">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div className="preview-hero-block">
-                <span className="preview-pill">Licensed & insured</span>
-                <strong>Reliable contractor services</strong>
-                <small>Trust signals, service areas, and quick contact paths.</small>
-              </div>
-            </div>
-            <div className="contractor-proof-row">
-              <span>SMS-ready</span>
-              <span>Reviews</span>
-              <span>Service areas</span>
-            </div>
-            <div className="contractor-card-row">
-              <span>
-                <strong>Estimate</strong>
-                <small>Clear request flow</small>
-              </span>
-              <span>
-                <strong>Compliance</strong>
-                <small>Credibility details</small>
-              </span>
-            </div>
-          </>
-        )}
-        {type === 'lawn' && (
-          <>
-            <div className="preview-banner">
-              <div>
-                <strong>Prime Lawn Care</strong>
-                <small>Weekly mowing, cleanups, and seasonal care.</small>
-              </div>
-              <span>Get a fast quote</span>
-            </div>
-            <div className="preview-service-row">
-              <span>Mowing</span>
-              <span>Cleanup</span>
-              <span>Edging</span>
-            </div>
-            <div className="preview-form-card">
-              <strong>Request a quote</strong>
-              <span>Name and address</span>
-              <span>Service needed</span>
-              <button type="button" tabIndex={-1}>Request quote</button>
-            </div>
-          </>
-        )}
-        {type === 'falcon' && (
-          <>
-            <div className="preview-dashboard-top">
-              <strong>Order queue</strong>
-              <span>24 active</span>
-            </div>
-            <div className="preview-dashboard-grid">
-              <span>
-                <strong>12</strong>
-                <small>Inspections</small>
-              </span>
-              <span>
-                <strong>7</strong>
-                <small>Reports</small>
-              </span>
-              <span>
-                <strong>5</strong>
-                <small>Reviews</small>
-              </span>
-            </div>
-            <div className="preview-table">
-              <span>
-                <b>Client</b>
-                <b>Status</b>
-                <b>Due</b>
-              </span>
-              <span>
-                <b>Order 1048</b>
-                <b>Scheduled</b>
-                <b>Today</b>
-              </span>
-              <span>
-                <b>Order 1049</b>
-                <b>Review</b>
-                <b>Fri</b>
-              </span>
-            </div>
-          </>
-        )}
-        {type === 'lab' && (
-          <>
-            <div className="preview-lab-hero">
-              <strong>CreatorFuelAI</strong>
-              <small>Content systems, landing pages, and media experiments.</small>
-            </div>
-            <div className="preview-media-grid">
-              <span>Prompt</span>
-              <span>Script</span>
-              <span>Page</span>
-              <span>Asset</span>
-            </div>
-            <div className="lab-output-strip">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </>
+      <div className="screenshot-stage">
+        <img className="project-screenshot" src={image} alt={imageAlt} />
+        {secondaryImage && (
+          <img
+            className="project-screenshot-secondary"
+            src={secondaryImage}
+            alt={secondaryAlt}
+          />
         )}
       </div>
     </div>
@@ -247,21 +143,6 @@ function ProjectPreview({ type, title }) {
 }
 
 function App() {
-  const workTrackRef = useRef(null)
-
-  const scrollWork = (direction) => {
-    const track = workTrackRef.current
-
-    if (!track) {
-      return
-    }
-
-    track.scrollBy({
-      left: direction * Math.min(track.clientWidth * 0.86, 680),
-      behavior: 'smooth',
-    })
-  }
-
   return (
     <main className="site-shell">
       <header className="site-header">
@@ -372,28 +253,17 @@ function App() {
             <p className="section-kicker">Featured work</p>
             <h2>Real use cases built to improve trust, leads, and efficiency.</h2>
           </div>
-          <div className="work-controls" aria-label="Featured work carousel controls">
-            <button
-              type="button"
-              onClick={() => scrollWork(-1)}
-              aria-label="Scroll featured work left"
-            >
-              <ChevronLeft size={20} aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollWork(1)}
-              aria-label="Scroll featured work right"
-            >
-              <ChevronRight size={20} aria-hidden="true" />
-            </button>
-          </div>
         </div>
 
-        <div className="work-showcase" ref={workTrackRef} tabIndex={0}>
-          {work.map(({ title, description, icon: Icon, tags, cta, href, preview, private: isPrivate }) => (
+        <div className="work-showcase">
+          {work.map(({ title, description, icon: Icon, tags, cta, href, image, imageAlt, secondaryImage, secondaryAlt, private: isPrivate }) => (
             <article className="project-card" key={title}>
-              <ProjectPreview type={preview} title={title} />
+              <ProjectPreview
+                image={image}
+                imageAlt={imageAlt}
+                secondaryImage={secondaryImage}
+                secondaryAlt={secondaryAlt}
+              />
               <div className="project-content">
                 <div className="project-title-row">
                   <div className="work-icon">
