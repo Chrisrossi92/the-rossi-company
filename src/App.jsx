@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 import falconHomepagePreview from './assets/work/falcon-appraiser-homepage.png'
 import falconOrdersPreview from './assets/work/falcon-orders-list.png'
+import rossiLogo from './assets/brand/rossi-logo.png'
 import kirkhamHomepagePreview from './assets/work/kirkham-homepage-preview.png'
 import kirkhamSmsPreview from './assets/work/kirkham-sms-preview.png'
 import primeLawnCarePreview from './assets/work/prime-lawn-care-preview.png'
@@ -137,11 +138,18 @@ function ProjectPreview({ image, imageAlt, secondaryImage, secondaryAlt, preview
       <div className="screenshot-stage">
         <img className="project-screenshot" src={image} alt={imageAlt} />
         {secondaryImage && (
-          <img
-            className="project-screenshot-secondary"
-            src={secondaryImage}
-            alt={secondaryAlt}
-          />
+          <div className="secondary-screenshot-frame">
+            <div className="secondary-browser-bar" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <img
+              className="project-screenshot-secondary"
+              src={secondaryImage}
+              alt={secondaryAlt}
+            />
+          </div>
         )}
       </div>
     </div>
@@ -165,7 +173,7 @@ function App() {
     <main className="site-shell">
       <header className="site-header">
         <a className="brand" href="#top" aria-label="The Rossi Company home">
-          <span className="brand-mark">R</span>
+          <img className="brand-logo" src={rossiLogo} alt="" />
           <span className="brand-text">The Rossi Company</span>
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
