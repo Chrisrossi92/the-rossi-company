@@ -266,6 +266,7 @@ function App() {
     <main className="site-shell">
       <header className="site-header">
         <a className="brand" href="#top" aria-label="The Rossi Company home">
+          <span className="brand-mark">R</span>
           <span className="brand-text">The Rossi Company</span>
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
@@ -285,14 +286,11 @@ function App() {
             <BadgeCheck size={18} aria-hidden="true" />
             Practical outcomes for growing businesses
           </p>
-          <h1>
-            We help businesses look more professional, capture more leads, and
-            run more efficiently.
-          </h1>
+          <h1>Build better business systems.</h1>
           <p className="hero-subtitle">
-            The Rossi Company builds websites, workflow systems, and automation
-            that improve trust, simplify operations, and help small businesses
-            grow with less friction.
+            The Rossi Company helps small businesses look more professional,
+            capture more leads, and run more efficiently through websites,
+            workflow tools, and practical automation.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="mailto:chris@therossicompany.com">
@@ -303,9 +301,17 @@ function App() {
               View work
             </a>
           </div>
+          <p className="credibility-strip">
+            Ohio-based <span>•</span> Built for small businesses <span>•</span>{' '}
+            Websites, workflows, automation
+          </p>
         </div>
 
         <aside className="systems-panel" aria-label="System capabilities">
+          <div className="panel-status">
+            <span className="status-light"></span>
+            Systems audit ready
+          </div>
           <div className="panel-topline">
             <span>Company systems</span>
             <CheckCircle2 size={18} aria-hidden="true" />
