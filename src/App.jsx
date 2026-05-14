@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import {
   ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
   Building2,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   ClipboardList,
   ExternalLink,
   LockKeyhole,
@@ -59,6 +62,7 @@ const work = [
     secondaryImage: kirkhamSmsPreview,
     imageAlt: 'Kirkham Contracting website homepage preview',
     secondaryAlt: 'Kirkham Contracting SMS compliance page preview',
+    previewClass: 'kirkham-preview',
   },
   {
     title: 'Prime Lawn Care',
@@ -70,6 +74,7 @@ const work = [
     href: 'https://prime-lawn-care.vercel.app/',
     image: primeLawnCarePreview,
     imageAlt: 'Prime Lawn Care website preview',
+    previewClass: 'prime-preview',
   },
   {
     title: 'Falcon Platform',
@@ -82,6 +87,7 @@ const work = [
     secondaryImage: falconOrdersPreview,
     imageAlt: 'Falcon Platform appraiser dashboard preview',
     secondaryAlt: 'Falcon Platform orders list preview',
+    previewClass: 'falcon-preview',
     private: true,
   },
 ]
@@ -120,9 +126,9 @@ const benefits = [
   },
 ]
 
-function ProjectPreview({ image, imageAlt, secondaryImage, secondaryAlt }) {
+function ProjectPreview({ image, imageAlt, secondaryImage, secondaryAlt, previewClass }) {
   return (
-    <div className="preview-screen screenshot-preview">
+    <div className={`preview-screen screenshot-preview ${previewClass}`}>
       <div className="preview-browser-bar">
         <span></span>
         <span></span>
@@ -143,6 +149,18 @@ function ProjectPreview({ image, imageAlt, secondaryImage, secondaryAlt }) {
 }
 
 function App() {
+  const [activeWorkIndex, setActiveWorkIndex] = useState(0)
+  const activeWork = work[activeWorkIndex]
+  const ActiveWorkIcon = activeWork.icon
+
+  const showPreviousWork = () => {
+    setActiveWorkIndex((current) => (current - 1 + work.length) % work.length)
+  }
+
+  const showNextWork = () => {
+    setActiveWorkIndex((current) => (current + 1) % work.length)
+  }
+
   return (
     <main className="site-shell">
       <header className="site-header">
@@ -253,49 +271,79 @@ function App() {
             <p className="section-kicker">Featured work</p>
             <h2>Real use cases built to improve trust, leads, and efficiency.</h2>
           </div>
+          <div className="work-controls" aria-label="Featured work carousel controls">
+            <button
+              type="button"
+              onClick={showPreviousWork}
+              aria-label="Show previous featured project"
+            >
+              <ChevronLeft size={20} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={showNextWork}
+              aria-label="Show next featured project"
+            >
+              <ChevronRight size={20} aria-hidden="true" />
+            </button>
+          </div>
         </div>
 
         <div className="work-showcase">
-          {work.map(({ title, description, icon: Icon, tags, cta, href, image, imageAlt, secondaryImage, secondaryAlt, private: isPrivate }) => (
-            <article className="project-card" key={title}>
-              <ProjectPreview
-                image={image}
-                imageAlt={imageAlt}
-                secondaryImage={secondaryImage}
-                secondaryAlt={secondaryAlt}
-              />
-              <div className="project-content">
-                <div className="project-title-row">
-                  <div className="work-icon">
-                    <Icon size={22} aria-hidden="true" />
-                  </div>
-                  <h3>{title}</h3>
+          <article className="project-feature-card" key={activeWork.title}>
+            <ProjectPreview
+              image={activeWork.image}
+              imageAlt={activeWork.imageAlt}
+              secondaryImage={activeWork.secondaryImage}
+              secondaryAlt={activeWork.secondaryAlt}
+              previewClass={activeWork.previewClass}
+            />
+            <div className="project-content">
+              <div className="project-title-row">
+                <div className="work-icon">
+                  <ActiveWorkIcon size={22} aria-hidden="true" />
                 </div>
-                <p>{description}</p>
-                <div className="project-tags" aria-label={`${title} categories`}>
-                  {tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-                {href ? (
-                  <a
-                    className="project-link"
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {cta}
-                    <ExternalLink size={16} aria-hidden="true" />
-                  </a>
-                ) : (
-                  <span className="project-link project-link-muted">
-                    {isPrivate && <LockKeyhole size={16} aria-hidden="true" />}
-                    {cta}
-                  </span>
-                )}
+                <h3>{activeWork.title}</h3>
               </div>
-            </article>
-          ))}
+              <p>{activeWork.description}</p>
+              <div className="project-tags" aria-label={`${activeWork.title} categories`}>
+                {activeWork.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+              {activeWork.href ? (
+                <a
+                  className="project-link"
+                  href={activeWork.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {activeWork.cta}
+                  <ExternalLink size={16} aria-hidden="true" />
+                </a>
+              ) : (
+                <span className="project-link project-link-muted">
+                  {activeWork.private && <LockKeyhole size={16} aria-hidden="true" />}
+                  {activeWork.cta}
+                </span>
+              )}
+            </div>
+          </article>
+
+          <div className="project-selectors" aria-label="Select featured project">
+            {work.map((project, index) => (
+              <button
+                type="button"
+                key={project.title}
+                className={index === activeWorkIndex ? 'active' : ''}
+                onClick={() => setActiveWorkIndex(index)}
+                aria-label={`Show ${project.title}`}
+                aria-pressed={index === activeWorkIndex}
+              >
+                <span>{project.title}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -488,11 +488,11 @@ a {
 
 .work-showcase {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 18px;
 }
 
-.project-card {
+.project-card,
+.project-feature-card {
   background: var(--white);
   border: 1px solid rgba(229, 224, 216, 0.95);
   border-radius: 8px;
@@ -505,10 +505,23 @@ a {
 }
 
 .project-card:hover,
-.project-card:focus-within {
+.project-card:focus-within,
+.project-feature-card:hover,
+.project-feature-card:focus-within {
   border-color: rgba(49, 72, 56, 0.28);
   box-shadow: 0 24px 64px rgba(24, 35, 49, 0.14);
-  transform: translateY(-3px);
+}
+
+.project-feature-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  align-items: stretch;
+  gap: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(251, 250, 247, 0.54)),
+    var(--white);
+  min-height: 560px;
+  padding: 18px;
 }
 
 .preview-screen {
@@ -521,58 +534,89 @@ a {
 
 .screenshot-preview {
   background:
-    radial-gradient(circle at 85% 12%, rgba(165, 111, 60, 0.12), transparent 36%),
-    #f8f7f3;
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.7), transparent 30%),
+    radial-gradient(circle at 86% 82%, rgba(81, 109, 88, 0.11), transparent 34%),
+    linear-gradient(135deg, rgba(243, 240, 234, 0.98), rgba(232, 225, 214, 0.82));
+  border: 1px solid rgba(229, 224, 216, 0.92);
+  border-radius: 24px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -18px 42px rgba(165, 111, 60, 0.07),
+    0 22px 54px rgba(24, 35, 49, 0.1);
+  display: grid;
+  grid-template-rows: 32px 1fr;
+  height: 100%;
   min-height: auto;
+  overflow: hidden;
+  padding: 18px;
 }
 
 .screenshot-stage {
-  background: #ece7df;
-  height: 238px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(229, 224, 216, 0.82);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 18px rgba(24, 35, 49, 0.04),
+    0 16px 34px rgba(24, 35, 49, 0.08);
+  height: 100%;
+  min-height: 466px;
   overflow: hidden;
   position: relative;
+  padding: 22px;
 }
 
 .project-screenshot {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
-  object-position: top center;
+  border: 1px solid rgba(229, 224, 216, 0.92);
+  border-radius: 10px;
+  box-shadow: 0 18px 42px rgba(24, 35, 49, 0.14);
+  object-fit: contain;
+  object-position: center center;
 }
 
-.project-card:nth-child(1) .project-screenshot {
-  object-position: center 12%;
+.kirkham-preview .project-screenshot {
+  object-position: center center;
 }
 
-.project-card:nth-child(2) .project-screenshot {
-  object-position: center 8%;
+.prime-preview .project-screenshot {
+  object-position: center top;
 }
 
-.project-card:nth-child(3) .project-screenshot {
-  object-position: center 10%;
+.falcon-preview .project-screenshot {
+  object-position: center top;
 }
 
 .project-screenshot-secondary {
-  width: 31%;
+  width: 24%;
   aspect-ratio: 4 / 3;
   position: absolute;
-  right: 14px;
-  bottom: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 6px;
-  box-shadow: 0 14px 30px rgba(24, 35, 49, 0.22);
-  object-fit: cover;
+  right: 34px;
+  bottom: 32px;
+  border: 1px solid rgba(229, 224, 216, 0.88);
+  border-radius: 10px;
+  box-shadow: 0 20px 44px rgba(24, 35, 49, 0.26);
+  object-fit: contain;
   object-position: top center;
+  background: var(--white);
+  padding: 3px;
 }
 
 .preview-browser-bar {
-  height: 32px;
+  height: 30px;
   display: flex;
   align-items: center;
   gap: 7px;
-  border-bottom: 1px solid rgba(229, 224, 216, 0.9);
-  padding: 0 14px;
+  border: 1px solid rgba(229, 224, 216, 0.82);
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  background: rgba(255, 255, 255, 0.58);
+  margin: 0 0 -1px;
+  padding: 0 13px;
 }
 
 .preview-browser-bar span {
@@ -957,7 +1001,14 @@ a {
 }
 
 .project-content {
-  padding: 20px;
+  align-self: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(251, 250, 247, 0.72)),
+    rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(229, 224, 216, 0.82);
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  padding: 30px;
 }
 
 .project-title-row {
@@ -983,6 +1034,13 @@ a {
   font-size: 15px;
   line-height: 1.55;
   margin: 14px 0 0;
+}
+
+.project-feature-card p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 16px 0 0;
 }
 
 .project-tags {
@@ -1040,6 +1098,42 @@ a {
 .project-card:nth-child(4) .work-icon {
   color: var(--bronze);
   background: rgba(165, 111, 60, 0.12);
+}
+
+.project-selectors {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.project-selectors button {
+  min-height: 46px;
+  border: 1px solid rgba(229, 224, 216, 0.95);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 10px 12px;
+  text-align: left;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.project-selectors button:hover,
+.project-selectors button:focus-visible,
+.project-selectors button.active {
+  background: var(--white);
+  border-color: rgba(49, 72, 56, 0.32);
+  color: var(--ink);
+}
+
+.project-selectors button.active {
+  box-shadow: inset 0 -3px 0 rgba(165, 111, 60, 0.48);
 }
 
 .about-section {
@@ -1143,8 +1237,19 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .project-feature-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 14px;
+  }
+
   .screenshot-stage {
-    height: 360px;
+    height: 390px;
+    min-height: 390px;
+  }
+
+  .project-content {
+    padding: 26px;
   }
 }
 
@@ -1232,7 +1337,9 @@ a {
   }
 
   .project-card:hover,
-  .project-card:focus-within {
+  .project-card:focus-within,
+  .project-feature-card:hover,
+  .project-feature-card:focus-within {
     transform: none;
   }
 
@@ -1241,13 +1348,29 @@ a {
   }
 
   .screenshot-stage {
-    height: 230px;
+    height: 260px;
+    min-height: 260px;
+    padding: 12px;
+  }
+
+  .screenshot-preview {
+    border-radius: 18px;
+    padding: 12px;
   }
 
   .project-screenshot-secondary {
-    width: 38%;
+    width: 34%;
     right: 10px;
     bottom: 10px;
+  }
+
+  .project-content {
+    border-radius: 14px;
+    padding: 22px;
+  }
+
+  .project-selectors {
+    grid-template-columns: 1fr;
   }
 
   .systems-panel {
