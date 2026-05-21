@@ -1,172 +1,167 @@
-import { useState } from 'react'
 import {
   ArrowRight,
   BadgeCheck,
+  Bot,
+  BrainCircuit,
   BriefcaseBusiness,
   Building2,
-  CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
-  ClipboardList,
+  CalendarCheck,
+  ChartNoAxesCombined,
   ExternalLink,
+  Gauge,
+  Globe2,
+  Layers3,
   LockKeyhole,
   Mail,
   MessageSquareText,
+  MousePointer2,
   Network,
-  ShieldCheck,
+  Palette,
+  QrCode,
+  Sparkles,
   Wrench,
+  Workflow,
 } from 'lucide-react'
 import falconHomepagePreview from './assets/work/falcon-appraiser-homepage.png'
 import falconOrdersPreview from './assets/work/falcon-orders-list.png'
-import rossiLogo from './assets/brand/rossi-logo.png'
 import kirkhamHomepagePreview from './assets/work/kirkham-homepage-preview.png'
 import kirkhamSmsPreview from './assets/work/kirkham-sms-preview.png'
 import primeLawnCarePreview from './assets/work/prime-lawn-care-preview.png'
+import rossiLogo from './assets/brand/rossi-logo.png'
+import velocityDashboard from './assets/work/velocity-auto-spa/dashboard.png'
+import velocityHero from './assets/work/velocity-auto-spa/hero.png'
+import velocityMobile from './assets/work/velocity-auto-spa/mobile.png'
+import CardPage from './CardPage.jsx'
 import './App.css'
 
-const services = [
+const contactEmail = 'chris@therossicompany.com'
+const facebookUrl = 'https://www.facebook.com/profile.php?id=61590228683996'
+
+const capabilities = [
   {
-    title: 'Business Websites',
+    title: 'Modern Websites',
     description:
-      'Clear, credible websites that help customers understand what you do and how to take the next step.',
+      'Fast, credible sites that make a business feel established before the first call.',
+    icon: Globe2,
+    stat: 'First impression',
+  },
+  {
+    title: 'AI Business Tools',
+    description:
+      'Practical AI helpers for intake, content, research, summaries, and repeat decisions.',
+    icon: BrainCircuit,
+    stat: 'Smarter work',
+  },
+  {
+    title: 'Automation',
+    description:
+      'Follow-up, reminders, forms, handoffs, and repetitive admin work handled cleanly.',
+    icon: Workflow,
+    stat: 'Less busywork',
+  },
+  {
+    title: 'Dashboards & Portals',
+    description:
+      'Private views for orders, customers, team tasks, documents, and daily operations.',
+    icon: ChartNoAxesCombined,
+    stat: 'Clear control',
+  },
+  {
+    title: 'Branding Concepts',
+    description:
+      'Visual direction, offer positioning, page structure, and digital experience ideas.',
+    icon: Palette,
+    stat: 'Sharper presence',
+  },
+  {
+    title: 'Local Business Systems',
+    description:
+      'Quote, booking, customer communication, and service workflows built around how you work.',
     icon: Building2,
-  },
-  {
-    title: 'Compliance & Trust Systems',
-    description:
-      'Practical digital foundations for credibility, platform approvals, customer communication, and reputation.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Workflow Tools',
-    description:
-      'Focused tools that organize requests, tasks, documents, orders, and handoffs inside the business.',
-    icon: ClipboardList,
-  },
-  {
-    title: 'Automation Support',
-    description:
-      'Simple automation that reduces repeated admin work without making the business harder to manage.',
-    icon: Network,
+    stat: 'Local growth',
   },
 ]
 
-const work = [
+const valueItems = [
+  {
+    title: 'Better first impressions',
+    description:
+      'A cleaner web presence helps customers understand who you are, what you do, and why you are credible.',
+    icon: BadgeCheck,
+  },
+  {
+    title: 'Cleaner intake',
+    description:
+      'Forms and quote flows can collect the right details upfront instead of starting every job with back-and-forth.',
+    icon: MessageSquareText,
+  },
+  {
+    title: 'Automated follow-up',
+    description:
+      'Simple reminders, confirmations, and status updates keep leads warm and customers informed.',
+    icon: CalendarCheck,
+  },
+  {
+    title: 'Modern credibility',
+    description:
+      'Portals, dashboards, and branded touchpoints make a local business feel organized and serious.',
+    icon: Gauge,
+  },
+]
+
+const showcaseFeatures = [
+  'Brand identity direction',
+  'Website and mobile UX',
+  'Membership app concept',
+  'Owner dashboard thinking',
+  'AI-assisted creative direction',
+]
+
+const projects = [
   {
     title: 'Contractor SMS-Ready Website',
+    type: 'Real project',
     description:
-      'A contractor website built to strengthen credibility, present commercial services clearly, and support SMS/texting platform approval requirements.',
+      'A credibility-focused contractor site built around clear services, trust signals, and SMS/texting platform approval requirements.',
     icon: MessageSquareText,
     tags: ['Contractor Website', 'SMS Compliance', 'Trust Signals'],
-    cta: 'View case study',
+    cta: 'Case study preview',
     image: kirkhamHomepagePreview,
     secondaryImage: kirkhamSmsPreview,
     imageAlt: 'Kirkham Contracting website homepage preview',
     secondaryAlt: 'Kirkham Contracting SMS compliance page preview',
-    previewClass: 'kirkham-preview',
   },
   {
     title: 'Prime Lawn Care',
+    type: 'Live website',
     description:
-      'A local service business website designed to present services clearly, build trust quickly, and make quote requests simple.',
+      'A local service website designed to present lawn care services clearly, build trust quickly, and make quote requests simple.',
     icon: Wrench,
     tags: ['Local Business', 'Website', 'Lead Capture'],
     cta: 'View live site',
     href: 'https://prime-lawn-care.vercel.app/',
     image: primeLawnCarePreview,
     imageAlt: 'Prime Lawn Care website preview',
-    previewClass: 'prime-preview',
   },
   {
     title: 'Falcon Platform',
+    type: 'Private product',
     description:
-      'A workflow and order management platform built for appraisal operations, tracking orders, deadlines, reviews, and team handoffs.',
+      'A workflow and order management product for appraisal operations, tracking orders, deadlines, reviews, and team handoffs.',
     icon: BriefcaseBusiness,
     tags: ['Operations Platform', 'Workflow', 'Appraisal Tech'],
-    cta: 'Private concept',
+    cta: 'Private platform concept',
     image: falconHomepagePreview,
     secondaryImage: falconOrdersPreview,
     imageAlt: 'Falcon Platform appraiser dashboard preview',
     secondaryAlt: 'Falcon Platform orders list preview',
-    previewClass: 'falcon-preview',
     private: true,
   },
 ]
 
-const systemItems = [
-  'Websites',
-  'Workflow Tools',
-  'Automation',
-  'Business Systems',
-]
-
-const benefits = [
-  {
-    title: 'Look more credible',
-    description:
-      'Give prospects, partners, and platforms a clear reason to trust your business before they ever call.',
-    icon: BadgeCheck,
-  },
-  {
-    title: 'Capture better leads',
-    description:
-      'Make it easier for the right customers to understand your offer and take the next step.',
-    icon: MessageSquareText,
-  },
-  {
-    title: 'Reduce manual follow-up',
-    description:
-      'Use simple systems to organize requests, handoffs, and recurring admin work.',
-    icon: Network,
-  },
-  {
-    title: 'Support approvals and growth',
-    description:
-      'Build the digital foundation needed for texting, trust, operations, and future expansion.',
-    icon: CheckCircle2,
-  },
-]
-
-function ProjectPreview({ image, imageAlt, secondaryImage, secondaryAlt, previewClass }) {
-  return (
-    <div className={`preview-screen screenshot-preview ${previewClass}`}>
-      <div className="preview-browser-bar">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div className="screenshot-stage">
-        <img className="project-screenshot" src={image} alt={imageAlt} />
-        {secondaryImage && (
-          <div className="secondary-screenshot-frame">
-            <div className="secondary-browser-bar" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <img
-              className="project-screenshot-secondary"
-              src={secondaryImage}
-              alt={secondaryAlt}
-            />
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
-
 function App() {
-  const [activeWorkIndex, setActiveWorkIndex] = useState(0)
-  const activeWork = work[activeWorkIndex]
-  const ActiveWorkIcon = activeWork.icon
-
-  const showPreviousWork = () => {
-    setActiveWorkIndex((current) => (current - 1 + work.length) % work.length)
-  }
-
-  const showNextWork = () => {
-    setActiveWorkIndex((current) => (current + 1) % work.length)
+  if (window.location.pathname === '/card') {
+    return <CardPage />
   }
 
   return (
@@ -177,214 +172,263 @@ function App() {
           <span className="brand-text">The Rossi Company</span>
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
-          <a href="#services">Services</a>
           <a href="#work">Work</a>
-          <a href="#about">About</a>
+          <a href="#build">What I Build</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a className="nav-cta" href="mailto:chris@therossicompany.com">
-          Let's Talk
+        <a className="nav-cta" href={`mailto:${contactEmail}`}>
+          <Mail size={16} aria-hidden="true" />
+          Contact Me
         </a>
       </header>
 
       <section className="hero-section" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow">
-            <BadgeCheck size={18} aria-hidden="true" />
-            Practical outcomes for growing businesses
-          </p>
-          <h1>Build better business systems.</h1>
+        <div className="hero-orbit" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <img className="hero-watermark" src={rossiLogo} alt="" aria-hidden="true" />
+
+        <div className="digital-card">
+          <div className="card-topline">
+            <span className="live-dot"></span>
+            Digital business systems
+          </div>
+          <div className="identity-module" aria-label="Christopher Rossi digital business card">
+            <div className="identity-main">
+              <div className="identity-mark">
+                <img src={rossiLogo} alt="" />
+              </div>
+              <div className="identity-copy">
+                <span className="identity-label">Digital Card Active</span>
+                <strong>Christopher Rossi</strong>
+                <span>Founder / The Rossi Company</span>
+                <span className="identity-location">Bowling Green, OH</span>
+              </div>
+            </div>
+            <div className="identity-connect">
+              <div className="scan-tile" aria-hidden="true">
+                <QrCode size={26} />
+                <span></span>
+              </div>
+              <div className="card-status">
+                <span className="status-dot"></span>
+                Site unlocked
+              </div>
+              <div className="identity-services">
+                Website / AI / Automation / Digital Systems
+              </div>
+              <div className="identity-chips" aria-label="Digital card quick links">
+                <a href="#work">Work</a>
+                <a href={`mailto:${contactEmail}`}>Contact</a>
+                <a href={facebookUrl} target="_blank" rel="noreferrer">
+                  Facebook
+                </a>
+              </div>
+            </div>
+          </div>
+          <h1>The Rossi Company</h1>
           <p className="hero-subtitle">
-            The Rossi Company helps small businesses look more professional,
-            capture more leads, and run more efficiently through websites,
-            workflow tools, and practical automation.
+            Websites, AI-assisted workflows, automation, dashboards, portals,
+            and branded digital experiences for local businesses that need a
+            sharper first impression and cleaner operations.
           </p>
           <div className="hero-actions">
-            <a className="button primary" href="mailto:chris@therossicompany.com">
-              Start a conversation
+            <a className="button primary" href="#work">
+              View Work
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="button secondary" href="#work">
-              View work
+            <a className="button secondary" href="#build">
+              What I Build
+            </a>
+            <a className="button ghost" href={`mailto:${contactEmail}`}>
+              Contact Me
             </a>
           </div>
-          <p className="credibility-strip">
-            Ohio-based <span>•</span> Built for small businesses <span>•</span>{' '}
-            Websites, workflows, automation
-          </p>
         </div>
 
-        <aside className="systems-panel" aria-label="System capabilities">
-          <div className="panel-status">
-            <span className="status-light"></span>
-            Systems audit ready
+        <aside className="command-panel" aria-label="Command center preview">
+          <div className="panel-header">
+            <span>Command center</span>
+            <Bot size={18} aria-hidden="true" />
           </div>
-          <div className="panel-topline">
-            <span>Company systems</span>
-            <CheckCircle2 size={18} aria-hidden="true" />
+          <div className="panel-metric primary-metric">
+            <small>Current focus</small>
+            <strong>Local business systems</strong>
           </div>
-          <div className="panel-stack">
-            {systemItems.map((item) => (
-              <div className="system-row" key={item}>
-                <span className="system-dot"></span>
-                <span>{item}</span>
-              </div>
-            ))}
+          <div className="signal-grid">
+            <span>Web</span>
+            <span>AI</span>
+            <span>CRM</span>
+            <span>Ops</span>
           </div>
-          <div className="panel-note">
-            Built to make the business easier to trust, run, and grow.
+          <div className="panel-flow">
+            <div>
+              <MousePointer2 size={16} aria-hidden="true" />
+              Lead captured
+            </div>
+            <div>
+              <Network size={16} aria-hidden="true" />
+              Workflow routed
+            </div>
+            <div>
+              <Sparkles size={16} aria-hidden="true" />
+              Follow-up ready
+            </div>
           </div>
         </aside>
       </section>
 
-      <section className="section" id="services">
+      <section className="section" id="build">
         <div className="section-heading">
-          <p className="section-kicker">What we build</p>
-          <h2>Websites and systems built around business outcomes.</h2>
+          <p className="section-kicker">What I Build</p>
+          <h2>Digital tools that look sharp and actually help the business run.</h2>
         </div>
-        <div className="card-grid">
-          {services.map(({ title, description, icon: Icon }) => (
-            <article className="info-card" key={title}>
-              <div className="icon-box">
-                <Icon size={22} aria-hidden="true" />
-              </div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section outcomes-section" id="outcomes">
-        <div className="section-heading">
-          <p className="section-kicker">Why it matters</p>
-          <h2>What this actually does for your business</h2>
-        </div>
-        <div className="benefit-grid">
-          {benefits.map(({ title, description, icon: Icon }) => (
-            <article className="benefit-block" key={title}>
-              <div className="benefit-icon">
-                <Icon size={21} aria-hidden="true" />
-              </div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section muted-section" id="work">
-        <div className="work-heading-row">
-          <div className="section-heading">
-            <p className="section-kicker">Featured work</p>
-            <h2>Real use cases built to improve trust, leads, and efficiency.</h2>
-          </div>
-          <div className="work-controls" aria-label="Featured work carousel controls">
-            <button
-              type="button"
-              onClick={showPreviousWork}
-              aria-label="Show previous featured project"
-            >
-              <ChevronLeft size={20} aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={showNextWork}
-              aria-label="Show next featured project"
-            >
-              <ChevronRight size={20} aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-
-        <div className="work-showcase">
-          <article className="project-feature-card" key={activeWork.title}>
-            <ProjectPreview
-              image={activeWork.image}
-              imageAlt={activeWork.imageAlt}
-              secondaryImage={activeWork.secondaryImage}
-              secondaryAlt={activeWork.secondaryAlt}
-              previewClass={activeWork.previewClass}
-            />
-            <div className="project-content">
-              <div className="project-title-row">
-                <div className="work-icon">
-                  <ActiveWorkIcon size={22} aria-hidden="true" />
+        <div className="capability-grid">
+          {capabilities.map(({ title, description, icon: Icon, stat }) => (
+            <article className="capability-card" key={title}>
+              <div className="capability-top">
+                <div className="icon-box">
+                  <Icon size={22} aria-hidden="true" />
                 </div>
-                <h3>{activeWork.title}</h3>
+                <span>{stat}</span>
               </div>
-              <p>{activeWork.description}</p>
-              <div className="project-tags" aria-label={`${activeWork.title} categories`}>
-                {activeWork.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-              {activeWork.href ? (
-                <a
-                  className="project-link"
-                  href={activeWork.href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {activeWork.cta}
-                  <ExternalLink size={16} aria-hidden="true" />
-                </a>
-              ) : (
-                <span className="project-link project-link-muted">
-                  {activeWork.private && <LockKeyhole size={16} aria-hidden="true" />}
-                  {activeWork.cta}
-                </span>
-              )}
-            </div>
-          </article>
-
-          <div className="project-selectors" aria-label="Select featured project">
-            {work.map((project, index) => (
-              <button
-                type="button"
-                key={project.title}
-                className={index === activeWorkIndex ? 'active' : ''}
-                onClick={() => setActiveWorkIndex(index)}
-                aria-label={`Show ${project.title}`}
-                aria-pressed={index === activeWorkIndex}
-              >
-                <span>{project.title}</span>
-              </button>
-            ))}
-          </div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="about-section" id="about">
-        <div className="about-label">
-          <span>Founder/operator</span>
-        </div>
-        <div className="about-copy">
-          <h2>Built by someone who understands practical business operations.</h2>
-          <p>
-            The Rossi Company is led by Chris Rossi, a real estate appraiser
-            and builder of practical digital tools for small businesses. The
-            focus is simple: create useful systems that make businesses look
-            more professional, operate more efficiently, and grow with less
-            friction.
+      <section className="section projects-section" id="work">
+        <div className="section-heading">
+          <p className="section-kicker">Real Work</p>
+          <h2>Projects and products built around credibility, leads, and operations.</h2>
+          <p className="section-copy">
+            Actual websites and internal tools, shown separately from concept
+            demonstrations so the portfolio proof stays clear.
           </p>
+        </div>
+        <div className="project-grid">
+          {projects.map(({ title, type, description, icon: Icon, tags, cta, href, image, imageAlt, secondaryImage, secondaryAlt, private: isPrivate }) => (
+            <article className="project-card" key={title}>
+              <div className="project-image-frame">
+                <img className="project-image" src={image} alt={imageAlt} />
+                {secondaryImage && (
+                  <div className="project-secondary-frame">
+                    <img src={secondaryImage} alt={secondaryAlt} />
+                  </div>
+                )}
+              </div>
+              <div className="project-card-copy">
+                <span className="project-type">{type}</span>
+                <div className="project-title-row">
+                  <div className="icon-box">
+                    <Icon size={21} aria-hidden="true" />
+                  </div>
+                  <h3>{title}</h3>
+                </div>
+                <p>{description}</p>
+                <div className="feature-pills project-tags" aria-label={`${title} categories`}>
+                  {tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                {href ? (
+                  <a className="project-link" href={href} target="_blank" rel="noreferrer">
+                    {cta}
+                    <ExternalLink size={16} aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span className="project-link project-link-muted">
+                    {isPrivate && <LockKeyhole size={16} aria-hidden="true" />}
+                    {cta}
+                  </span>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="showcase-section" id="concepts">
+        <div className="section-heading showcase-heading">
+          <p className="section-kicker">Concept Demonstration</p>
+          <h2>Velocity Auto Spa shows how a local brand can become a full digital experience.</h2>
+        </div>
+
+        <article className="concept-showcase">
+          <div className="concept-visual" aria-label="Velocity Auto Spa concept interface preview">
+            <div className="concept-hero-image">
+              <img src={velocityHero} alt="Velocity Auto Spa concept website hero screen" />
+            </div>
+            <div className="concept-supporting-images">
+              <div className="concept-mobile-image">
+                <img src={velocityMobile} alt="Velocity Auto Spa mobile app concept screen" />
+              </div>
+              <div className="concept-dashboard-image">
+                <img src={velocityDashboard} alt="Velocity Auto Spa dashboard concept screen" />
+              </div>
+            </div>
+          </div>
+
+          <div className="concept-copy">
+            <div className="concept-badge">
+              <Layers3 size={16} aria-hidden="true" />
+              Concept demonstration, not a real client
+            </div>
+            <h3>A car wash brand imagined as a website, app, and owner dashboard.</h3>
+            <p>
+              Velocity Auto Spa demonstrates branding, landing-page design,
+              app-style booking, membership UX, dashboard thinking, and
+              AI-assisted creative direction in one polished concept system.
+            </p>
+            <div className="feature-pills" aria-label="Velocity Auto Spa concept features">
+              {showcaseFeatures.map((feature) => (
+                <span key={feature}>{feature}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section className="section value-section">
+        <div className="section-heading">
+          <p className="section-kicker">Business Value</p>
+          <h2>Practical improvements a local business can feel.</h2>
+        </div>
+        <div className="value-grid">
+          {valueItems.map(({ title, description, icon: Icon }) => (
+            <article className="value-card" key={title}>
+              <Icon size={22} aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="contact-section" id="contact">
         <div>
           <p className="section-kicker">Contact</p>
-          <h2>What part of your business feels harder than it should?</h2>
+          <h2>Have a business that should look sharper and run cleaner online?</h2>
           <p>
-            Tell me what you are trying to improve. We can talk through whether
-            the right next step is a better website, a cleaner workflow, or a
-            simple automation that removes repeated work.
+            Reach out to The Rossi Company. I build serious digital work for
+            real local businesses: websites, customer workflows, portals,
+            automation, and the systems behind them.
           </p>
         </div>
-        <a className="button primary contact-button" href="mailto:chris@therossicompany.com">
-          <Mail size={18} aria-hidden="true" />
-          chris@therossicompany.com
-        </a>
+        <div className="contact-actions">
+          <a className="button primary" href={`mailto:${contactEmail}`}>
+            <Mail size={18} aria-hidden="true" />
+            Contact Me
+          </a>
+          <a className="button secondary" href={facebookUrl} target="_blank" rel="noreferrer">
+            <ExternalLink size={18} aria-hidden="true" />
+            Follow on Facebook
+          </a>
+        </div>
       </section>
     </main>
   )

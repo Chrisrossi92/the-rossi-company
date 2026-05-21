@@ -1,0 +1,72 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(325 130) rotate(52) scale(440 360)">
+      <stop stop-color="#42D9FF" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#42D9FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1020 520) rotate(150) scale(420 300)">
+      <stop stop-color="#438BFF" stop-opacity="0.23"/>
+      <stop offset="1" stop-color="#438BFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="245" y1="107" x2="943" y2="524" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17212D"/>
+      <stop offset="0.52" stop-color="#0A0F16"/>
+      <stop offset="1" stop-color="#030507"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="240" y1="118" x2="960" y2="510" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F7FF" stop-opacity="0.42"/>
+      <stop offset="0.48" stop-color="#42D9FF" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="322" y1="76" x2="760" y2="570" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.2"/>
+      <stop offset="0.36" stop-color="#FFFFFF" stop-opacity="0.02"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="160" y="72" width="880" height="560" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="38" stdDeviation="34" flood-color="#000000" flood-opacity="0.48"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="36" flood-color="#42D9FF" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#030507"/>
+  <rect width="1200" height="630" fill="url(#glowA)"/>
+  <rect width="1200" height="630" fill="url(#glowB)"/>
+  <g opacity="0.16">
+    <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200" stroke="#D8E2ED" stroke-opacity="0.12"/>
+    <path d="M150 0V630M300 0V630M450 0V630M600 0V630M750 0V630M900 0V630M1050 0V630" stroke="#D8E2ED" stroke-opacity="0.12"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="210" y="112" width="780" height="406" rx="42" fill="url(#card)"/>
+    <rect x="211" y="113" width="778" height="404" rx="41" stroke="url(#edge)" stroke-width="2"/>
+    <path d="M224 128C372 144 513 175 646 220C755 257 859 306 976 382V154C976 140 964 128 950 128H224Z" fill="url(#shine)"/>
+    <circle cx="935" cy="162" r="112" fill="#42D9FF" fill-opacity="0.08"/>
+  </g>
+
+  <g>
+    <rect x="268" y="170" width="120" height="120" rx="28" fill="#101923" stroke="#42D9FF" stroke-opacity="0.28" stroke-width="2"/>
+    <image href="social-logo.png" x="283" y="182" width="90" height="90" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <text x="422" y="200" fill="#42D9FF" font-size="18" font-weight="800" letter-spacing="3">DIGITAL CARD ACTIVE</text>
+    <text x="422" y="262" fill="#F6F8FB" font-size="48" font-weight="850">Christopher Rossi</text>
+    <text x="422" y="310" fill="#D8E2ED" font-size="28" font-weight="700">The Rossi Company</text>
+    <text x="422" y="354" fill="#AAB7C6" font-size="22" font-weight="650">Modern digital systems for local businesses</text>
+  </g>
+
+  <g>
+    <rect x="422" y="394" width="142" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#D8E2ED" stroke-opacity="0.16"/>
+    <rect x="580" y="394" width="180" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#D8E2ED" stroke-opacity="0.16"/>
+    <rect x="776" y="394" width="180" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#D8E2ED" stroke-opacity="0.16"/>
+    <text x="446" y="419" fill="#D8E2ED" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="800">Websites</text>
+    <text x="604" y="419" fill="#D8E2ED" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="800">AI Workflows</text>
+    <text x="800" y="419" fill="#D8E2ED" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="800">Automation</text>
+  </g>
+
+  <g>
+    <circle cx="905" cy="456" r="5" fill="#42D9FF"/>
+    <text x="922" y="462" fill="#738091" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="800" letter-spacing="1.4">THE DIGITAL COMMAND CENTER</text>
+  </g>
+</svg>
