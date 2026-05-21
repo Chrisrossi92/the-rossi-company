@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   BadgeCheck,
-  Bot,
   BrainCircuit,
   BriefcaseBusiness,
   Building2,
@@ -14,11 +13,7 @@ import {
   LockKeyhole,
   Mail,
   MessageSquareText,
-  MousePointer2,
-  Network,
   Palette,
-  QrCode,
-  Sparkles,
   Wrench,
   Workflow,
 } from 'lucide-react'
@@ -183,56 +178,39 @@ function App() {
       </header>
 
       <section className="hero-section" id="top">
-        <div className="hero-orbit" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <div className="hero-environment" aria-hidden="true"></div>
         <img className="hero-watermark" src={rossiLogo} alt="" aria-hidden="true" />
 
-        <div className="digital-card">
-          <div className="card-topline">
-            <span className="live-dot"></span>
-            Digital business systems
+        <div className="card-dock" aria-label="Docked digital card preview">
+          <div className="dock-rail" aria-hidden="true">
+            <span></span>
           </div>
-          <div className="identity-module" aria-label="Christopher Rossi digital business card">
-            <div className="identity-main">
-              <div className="identity-mark">
-                <img src={rossiLogo} alt="" />
-              </div>
-              <div className="identity-copy">
-                <span className="identity-label">Digital Card Active</span>
-                <strong>Christopher Rossi</strong>
-                <span>Founder / The Rossi Company</span>
-                <span className="identity-location">Bowling Green, OH</span>
-              </div>
+          <a className="docked-card" href="/card" aria-label="Open Christopher Rossi digital card">
+            <span className="docked-card-glow" aria-hidden="true"></span>
+            <div className="docked-card-top">
+              <img src={rossiLogo} alt="" />
+              <span>Digital card</span>
             </div>
-            <div className="identity-connect">
-              <div className="scan-tile" aria-hidden="true">
-                <QrCode size={26} />
-                <span></span>
-              </div>
-              <div className="card-status">
-                <span className="status-dot"></span>
-                Site unlocked
-              </div>
-              <div className="identity-services">
-                Website / AI / Automation / Digital Systems
-              </div>
-              <div className="identity-chips" aria-label="Digital card quick links">
-                <a href="#work">Work</a>
-                <a href={`mailto:${contactEmail}`}>Contact</a>
-                <a href={facebookUrl} target="_blank" rel="noreferrer">
-                  Facebook
-                </a>
-              </div>
+            <div className="docked-card-copy">
+              <strong>Christopher Rossi</strong>
+              <span>Founder / The Rossi Company</span>
+              <small>Bowling Green, OH</small>
             </div>
-          </div>
-          <h1>The Rossi Company</h1>
+            <div className="docked-card-footer">
+              <span>Website</span>
+              <span>AI</span>
+              <span>Automation</span>
+            </div>
+          </a>
+        </div>
+
+        <div className="hero-copy">
+          <p className="hero-brand-label">The Rossi Company</p>
+          <h1>Modern digital systems for local businesses.</h1>
           <p className="hero-subtitle">
-            Websites, AI-assisted workflows, automation, dashboards, portals,
-            and branded digital experiences for local businesses that need a
-            sharper first impression and cleaner operations.
+            Premium websites, practical automation, AI-assisted workflows,
+            dashboards, and portals built for sharper first impressions and
+            cleaner operations.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#work">
@@ -247,37 +225,6 @@ function App() {
             </a>
           </div>
         </div>
-
-        <aside className="command-panel" aria-label="Command center preview">
-          <div className="panel-header">
-            <span>Command center</span>
-            <Bot size={18} aria-hidden="true" />
-          </div>
-          <div className="panel-metric primary-metric">
-            <small>Current focus</small>
-            <strong>Local business systems</strong>
-          </div>
-          <div className="signal-grid">
-            <span>Web</span>
-            <span>AI</span>
-            <span>CRM</span>
-            <span>Ops</span>
-          </div>
-          <div className="panel-flow">
-            <div>
-              <MousePointer2 size={16} aria-hidden="true" />
-              Lead captured
-            </div>
-            <div>
-              <Network size={16} aria-hidden="true" />
-              Workflow routed
-            </div>
-            <div>
-              <Sparkles size={16} aria-hidden="true" />
-              Follow-up ready
-            </div>
-          </div>
-        </aside>
       </section>
 
       <section className="section" id="build">
