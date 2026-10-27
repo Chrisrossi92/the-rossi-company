@@ -27,6 +27,7 @@ import velocityDashboard from './assets/work/velocity-auto-spa/dashboard.png'
 import velocityHero from './assets/work/velocity-auto-spa/hero.png'
 import velocityMobile from './assets/work/velocity-auto-spa/mobile.png'
 import CardPage from './CardPage.jsx'
+import HeroCard from './HeroCard.jsx'
 import './App.css'
 
 const contactEmail = 'chris@therossicompany.com'
@@ -34,9 +35,9 @@ const facebookUrl = 'https://www.facebook.com/profile.php?id=61590228683996'
 
 const capabilities = [
   {
-    title: 'Modern Websites',
+    title: 'Websites & UI Design',
     description:
-      'Fast, credible sites that make a business feel established before the first call.',
+      'Clear, responsive websites and easy-to-use interfaces that help visitors understand your business and take the next step.',
     icon: Globe2,
     stat: 'First impression',
   },
@@ -55,9 +56,9 @@ const capabilities = [
     stat: 'Less busywork',
   },
   {
-    title: 'Dashboards & Portals',
+    title: 'Web Apps & Portals',
     description:
-      'Private views for orders, customers, team tasks, documents, and daily operations.',
+      'Scoped web apps, dashboards, sign-in, and data storage setup for orders, documents, and everyday tasks.',
     icon: ChartNoAxesCombined,
     stat: 'Clear control',
   },
@@ -69,11 +70,11 @@ const capabilities = [
     stat: 'Sharper presence',
   },
   {
-    title: 'Local Business Systems',
+    title: 'Business Systems',
     description:
       'Quote, booking, customer communication, and service workflows built around how you work.',
     icon: Building2,
-    stat: 'Local growth',
+    stat: 'Better workflows',
   },
 ]
 
@@ -154,8 +155,8 @@ const projects = [
   },
 ]
 
-function App() {
-  if (window.location.pathname === '/card') {
+function App({ pathname = '/' }) {
+  if (pathname === '/card' || pathname === '/card/') {
     return <CardPage />
   }
 
@@ -181,36 +182,15 @@ function App() {
         <div className="hero-environment" aria-hidden="true"></div>
         <img className="hero-watermark" src={rossiLogo} alt="" aria-hidden="true" />
 
-        <div className="card-dock" aria-label="Docked digital card preview">
-          <div className="dock-rail" aria-hidden="true">
-            <span></span>
-          </div>
-          <a className="docked-card" href="/card" aria-label="Open Christopher Rossi digital card">
-            <span className="docked-card-glow" aria-hidden="true"></span>
-            <div className="docked-card-top">
-              <img src={rossiLogo} alt="" />
-              <span>Digital card</span>
-            </div>
-            <div className="docked-card-copy">
-              <strong>Christopher Rossi</strong>
-              <span>Founder / The Rossi Company</span>
-              <small>Bowling Green, OH</small>
-            </div>
-            <div className="docked-card-footer">
-              <span>Website</span>
-              <span>AI</span>
-              <span>Automation</span>
-            </div>
-          </a>
-        </div>
+        <HeroCard />
 
         <div className="hero-copy">
           <p className="hero-brand-label">The Rossi Company</p>
-          <h1>Modern digital systems for local businesses.</h1>
+          <h1>Digital tools.</h1>
           <p className="hero-subtitle">
-            Premium websites, practical automation, AI-assisted workflows,
-            dashboards, and portals built for sharper first impressions and
-            cleaner operations.
+            Website and UI design, scoped web apps, and practical automation
+            to help people find what they need and make everyday work easier.
+            Based in Bowling Green, Ohio, working remotely with businesses anywhere.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#work">
@@ -246,15 +226,20 @@ function App() {
             </article>
           ))}
         </div>
+        <p className="section-copy service-support">
+          Each project starts with an agreed scope. Optional ongoing help with
+          updates, fixes, or improvements can be discussed based on availability
+          and agreed separately, including what is covered and when help is available.
+        </p>
       </section>
 
       <section className="section projects-section" id="work">
         <div className="section-heading">
-          <p className="section-kicker">Real Work</p>
+          <p className="section-kicker">Selected Work</p>
           <h2>Projects and products built around credibility, leads, and operations.</h2>
           <p className="section-copy">
             Actual websites and internal tools, shown separately from concept
-            demonstrations so the portfolio proof stays clear.
+            demonstrations so you can see what was built and what is an exploration.
           </p>
         </div>
         <div className="project-grid">
@@ -343,7 +328,7 @@ function App() {
       <section className="section value-section">
         <div className="section-heading">
           <p className="section-kicker">Business Value</p>
-          <h2>Practical improvements a local business can feel.</h2>
+          <h2>Practical improvements for everyday business.</h2>
         </div>
         <div className="value-grid">
           {valueItems.map(({ title, description, icon: Icon }) => (
@@ -361,16 +346,18 @@ function App() {
           <p className="section-kicker">Contact</p>
           <h2>Have a business that should look sharper and run cleaner online?</h2>
           <p>
-            Reach out to The Rossi Company. I build serious digital work for
-            real local businesses: websites, customer workflows, portals,
-            automation, and the systems behind them.
+            Tell me what your business does, what you want to improve, and any
+            timing or budget you have in mind. A website link or a short
+            description is enough to start. We can discuss the scope by email;
+            no in-person meeting is needed.
           </p>
         </div>
         <div className="contact-actions">
           <a className="button primary" href={`mailto:${contactEmail}`}>
             <Mail size={18} aria-hidden="true" />
-            Contact Me
+            Email Chris
           </a>
+          <a className="contact-email" href={`mailto:${contactEmail}`}>{contactEmail}</a>
           <a className="button secondary" href={facebookUrl} target="_blank" rel="noreferrer">
             <ExternalLink size={18} aria-hidden="true" />
             Follow on Facebook
